@@ -34,11 +34,11 @@ namespace ConsolePointTree
 
             T[] sortedPoints = points.OrderBy(x => x.CompareByAxis(axis)).ToArray<T>();
 
-            for (int i = 0; i < sortedPoints.Length; i++)
-            {
-                Console.WriteLine("{0} : {1}", depth, sortedPoints[i].ToString());
-            }
-            Console.WriteLine("---");
+            //for (int i = 0; i < sortedPoints.Length; i++)
+            //{
+            //    Console.WriteLine("{0} : {1}", depth, sortedPoints[i].ToString());
+            //}
+            //Console.WriteLine("---");
 
             int median = points.Length / 2;
             KdTreeNode<T> node = new KdTreeNode<T>();
@@ -51,14 +51,12 @@ namespace ConsolePointTree
             return node;
         }
 
-        public void RangeSearch(T min, T max)
+        public T[] RangeSearch(T min, T max)
         {
+            this.pointsResults.Clear();
             SearchNode(this.root, min, max);
 
-            foreach ( T i in this.pointsResults)
-            {
-                Console.WriteLine(i.ToString());
-            }
+            return this.pointsResults.ToArray();
         }
 
         private void SearchNode(KdTreeNode<T> node, T min, T max)
@@ -67,7 +65,7 @@ namespace ConsolePointTree
             {
                 return;
             }
-            Console.WriteLine("==============");
+
             if (node.Location.InRange(min, max))
             {
                 this.pointsResults.Add(node.Location);

@@ -17,7 +17,13 @@ namespace ConsolePointTree
 
             kdTree.Create();
 
-            kdTree.RangeSearch(new Point3D(3.0f, 2.0f, 10.0f), new Point3D(6.0f, 5.0f, 13.0f));
+            Point3D[] results = kdTree.RangeSearch(new Point3D(3.0f, 2.0f, 10.0f), new Point3D(6.0f, 5.0f, 13.0f));
+            Console.WriteLine("results:");
+            foreach (Point3D i in results)
+            {
+                Console.WriteLine(i.ToString());
+            }
+
         }
     }
 }

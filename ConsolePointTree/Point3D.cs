@@ -41,7 +41,6 @@ namespace ConsolePointTree
 
         public bool InRange(Point3D min , Point3D max)
         {
-            Console.WriteLine("==> {0}", this.ToString());
             if (min.X < this.X && max.X > this.X)
             {
                 if (min.Y < this.Y && max.Y > this.Y)
