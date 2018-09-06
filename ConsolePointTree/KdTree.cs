@@ -10,7 +10,7 @@ namespace Geometry.PointSet
         List<T> points = new List<T>();
         private KdTreeNode<T> root;
 
-        List<T> pointsResults = new List<T>();
+      
 
         public void Add(T p)
         {
@@ -29,16 +29,9 @@ namespace Geometry.PointSet
                 return null;
             }
 
-
             int axis = depth % points[0].GetDimension();
 
             T[] sortedPoints = points.OrderBy(x => x.CompareByAxis(axis)).ToArray<T>();
-
-            //for (int i = 0; i < sortedPoints.Length; i++)
-            //{
-            //    Console.WriteLine("{0} : {1}", depth, sortedPoints[i].ToString());
-            //}
-            //Console.WriteLine("---");
 
             int median = points.Length / 2;
             KdTreeNode<T> node = new KdTreeNode<T>();
@@ -53,13 +46,13 @@ namespace Geometry.PointSet
 
         public T[] RangeSearch(T min, T max)
         {
-            this.pointsResults.Clear();
-            SearchNode(this.root, min, max);
+            List<T> results = new List<T>();
+            SearchNode(this.root, min, max, ref results);
 
-            return this.pointsResults.ToArray();
+            return results.ToArray();
         }
 
-        private void SearchNode(KdTreeNode<T> node, T min, T max)
+        private void SearchNode(KdTreeNode<T> node, T min, T max, ref List<T> results)
         {
             if (node == null)
             {
@@ -68,18 +61,17 @@ namespace Geometry.PointSet
 
             if (node.Location.InRange(min, max))
             {
-                this.pointsResults.Add(node.Location);
+                results.Add(node.Location);
             }
 
             if (node.Location.InRight(min, max, node.Axis))
             {
-                SearchNode(node.LeftChild, min, max);
+                SearchNode(node.LeftChild, min, max, ref results);
             }
             if (node.Location.InLeft(min, max, node.Axis))
             {
-                SearchNode(node.RightChild, min, max);
+                SearchNode(node.RightChild, min, max, ref results);
             }
         }
     }
-    
 }
