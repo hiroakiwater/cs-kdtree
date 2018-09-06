@@ -5,12 +5,10 @@ using System.Text;
 
 namespace Geometry.PointSet
 {
-    class KdTree<T, R> where T : IPointAxis<T, R>
+    public class KdTree<T, R> where T : IPointAxis<T, R>
     {
         List<T> points = new List<T>();
         private KdTreeNode<T> root;
-
-      
 
         public void Add(T p)
         {

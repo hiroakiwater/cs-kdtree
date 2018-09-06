@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Geometry.PointSet
 {
-    class KdTreeNode<T>
+    public class KdTreeNode<T>
     {
         public T Location { get; set; }
         public KdTreeNode<T> LeftChild { get; set; }

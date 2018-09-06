@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Geometry.PointSet
 {
-    class Point3D : IPointAxis<Point3D, float>
+    public class Point3D : IPointAxis<Point3D, float>
     {
         public float X { get; set; }
         public float Y { get; set; }

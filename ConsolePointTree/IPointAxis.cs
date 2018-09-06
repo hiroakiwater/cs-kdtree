@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Geometry.PointSet
 {
-    interface IPointAxis<T, R>
+    public interface IPointAxis<T, R>
     {
         int GetDimension();
 
