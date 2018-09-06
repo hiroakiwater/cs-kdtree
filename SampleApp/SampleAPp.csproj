@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConsolePointTree\ConsolePointTree.csproj" />
+    <ProjectReference Include="..\PointSetLibrary\PointSetLibrary.csproj" />
   </ItemGroup>
 
 </Project>
