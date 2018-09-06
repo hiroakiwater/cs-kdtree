@@ -33,11 +33,11 @@ namespace Geometry.PointSet
 
             int median = points.Length / 2;
             KdTreeNode<T> node = new KdTreeNode<T>();
-            node.Location = sortedPoints[median];
-            node.LeftChild = CreateKdTree(sortedPoints.Take(median).ToArray(), depth + 1);
+            node.Location   = sortedPoints[median];
+            node.LeftChild  = CreateKdTree(sortedPoints.Take(median).ToArray(), depth + 1);
             node.RightChild = CreateKdTree(sortedPoints.Skip(median + 1).ToArray(), depth + 1);
-            node.Depth = depth;
-            node.Axis = axis;
+            node.Depth      = depth;
+            node.Axis       = axis;
 
             return node;
         }
