@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ConsolePointTree
+namespace Geometry.PointSet
 {
     class KdTree<T, R> where T : IPointAxis<T, R>
     {

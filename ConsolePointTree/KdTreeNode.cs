@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsolePointTree
+namespace Geometry.PointSet
 {
     class KdTreeNode<T>
     {

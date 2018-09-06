@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ConsolePointTree
+namespace Geometry.PointSet
 {
     class Point3D : IPointAxis<Point3D, float>
     {
@@ -60,7 +60,7 @@ namespace ConsolePointTree
         {
             if (axis == 0)
             {
-                if (min.X <= this.X && max.X <= this.X)
+                if (min.X < this.X && max.X < this.X)
                 {
                     return false;
                 }
@@ -71,7 +71,7 @@ namespace ConsolePointTree
             }
             else if (axis == 1)
             {
-                if (min.Y <= this.Y && max.Y <= this.Y)
+                if (min.Y < this.Y && max.Y < this.Y)
                 {
                     return false;
                 }
@@ -82,7 +82,7 @@ namespace ConsolePointTree
             }
             else
             {
-                if (min.Z <= this.Z && max.Z <= this.Z)
+                if (min.Z < this.Z && max.Z < this.Z)
                 {
                     return false;
                 }
