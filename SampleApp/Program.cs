@@ -1,5 +1,6 @@
 ﻿using System;
 using Geometry.PointSet;
+using System.IO;
 
 namespace ConsoleApp1
 {
@@ -32,6 +33,36 @@ namespace ConsoleApp1
             {
                 Console.WriteLine(i.ToString());
             }
+
+
+            KdTree<Point3D, float> kdTreeBitmap = new KdTree<Point3D, float>();
+            StreamWriter writer = new StreamWriter("pointset.csv");
+            StreamWriter writer_search = new StreamWriter("search.csv");
+
+            Random random = new Random();
+            for (int i = 0; i < 100; i++)
+            {
+                float x = (float)random.NextDouble() * 200;
+                float y = (float)random.NextDouble() * 200;
+
+                
+                kdTreeBitmap.Add(new Point3D(x, y, 11.0f));
+
+                writer.WriteLine("{0}\t{1}", x, y);
+            }
+            writer.Close();
+
+            kdTreeBitmap.Create();
+
+
+            Point3D[] results_search = kdTreeBitmap.RangeSearch(new Point3D(100.0f, 100.0f, 0.0f), new Point3D(150.0f, 150.0f, 13.0f));
+            Console.WriteLine("result 1:");
+            foreach (Point3D i in results_search)
+            {
+                Console.WriteLine(i.ToString());
+                writer_search.WriteLine("{0}\t{1}", i.X, i.Y);
+            }
+            writer_search.Close();
         }
     }
 }
